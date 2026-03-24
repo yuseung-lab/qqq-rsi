@@ -402,13 +402,16 @@ const inputStyle = {
 const buttonStyle = {
   padding: "9px 12px",
   borderRadius: 8,
-  border: "1px solid #ccc",
-  background: "white",
+  border: "1px solid #777",
+  background: "#f3f4f6",
+  color: "#111827",
+  fontWeight: 600,
   cursor: "pointer",
 };
 
 const dangerButtonStyle = {
   ...buttonStyle,
-  border: "1px solid #d99",
-  background: "#fff7f7",
+  border: "1px solid #b91c1c",
+  background: "#fef2f2",
+  color: "#991b1b",
 };
