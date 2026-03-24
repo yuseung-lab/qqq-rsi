@@ -3,15 +3,18 @@ import { useEffect, useMemo, useState } from "react";
 function parseCSV(text) {
   return text
     .split("\n")
-    .slice(1)
-    .map((line) => {
-      const parts = line.trim().split(/[,\t]/);
-      const date = parts[0]?.trim();
+    .map(line => line.trim())
+    .filter(line => line && !line.toLowerCase().includes("date"))
+    .map(line => {
+      const parts = line.split(/[,\t]/);
+
+      const date = parts[0]?.trim().replace(/\//g, "-");
       const close = Number(parts[1]);
+
       return { date, close };
     })
-    .filter((x) => x.date && !isNaN(x.close))
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+    .filter(x => x.date && !isNaN(x.close))
+    .sort((a,b)=> new Date(a.date)-new Date(b.date));
 }
 
 function toCsvText(rows) {
